@@ -1,14 +1,27 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
+//FontAwesome
+@import 'fontawesome4_7/font-awesome';
 // Variables
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap4/bootstrap';
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.film-card>.card-img-top{
+  height:400px;
+  overflow: hidden;
+}
+.card.film-card{
+  height:590px;
+  overflow: hidden;
+}
+.rating li{
+  display: inline-block;
 }
