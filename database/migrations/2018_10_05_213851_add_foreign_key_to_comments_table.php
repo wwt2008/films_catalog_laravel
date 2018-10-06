@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration
+class AddForeignKeyToCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name_full')->unique();
-            $table->string('name_short', 2)->unique();
-            $table->timestamps();
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreign('film_id')->references('id')->on('films')->onDelete('cascade');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::table('comments', function (Blueprint $table) {
+            Schema::dropIfExists('comments');
+        });
     }
 }
